@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption Tool</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        body {
+            font-family: "Space Mono", monospace;
+            font-weight: 400;
+            font-style: normal;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color: white;
+        }
+
+        #decs{
+            display: flex;
+            justify-content: baseline;
+            font-size: x-small;
+        }
+
+        .title_desc{
+            display: flex;
+            justify-content: space-between;
+            gap: 2px;
+        }
+
+        h3{
+            margin: 0px;
+        }
+
+        .text-box{
+            border-radius: 50%;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title_desc">
+            ENCRYPTOR !
+        </div>
+        <p id="decs">  Where you convert your plain texts. <strong> FUN !</strong></p>
+        <div>
+            <div class="dropdown">
+                <label for="algorithm">Choose the Algorithm</label>
+                <select id="algorithm">
+                    <option value="b64">BASE64</option>
+                    <option value="rsa">RSA</option>
+                    <option value="des">DES</option>
+                </select>
+            </div>
+    
+            <div class="text-box">
+                <label for="plain-text">Plain Text</label>
+                <input type="text" id="plain-text" placeholder="Enter plain text here">
+            </div> 
+            <div class="text-box">
+                <label for="cipher-text">Cpher Text</label>
+                <input type="text" id="cipher-text" placeholder="Cipher text will appear here" readonly>
+            </div>
+        </div>
+        <button class="button" onclick="encryptText()">Encrypt</button>
+        
+    </div>
+
+    <script>
+
+        function encryptText(){
+            const algorithm = document.getElementById('algorithm').value;
+            const plainText = document.getElementById('plain-text').value;
+            let cipherText = '';
+            if (algorithm === 'b64') {
+                cipherText = btoa(plainText);
+            } else {
+                alert('Only Base64 encoding is implemented in this example.');
+            }
+            document.getElementById('cipher-text').value = cipherText;
+        }
+        // You can add JavaScript here to handle the encryption process
+        // and update the cipher text box based on the selected algorithm and plain text input.
+    </script>
+</body>
+</html>
